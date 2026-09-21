@@ -13,37 +13,32 @@ Designed for rapid adoption on client engagements and as a reference implementat
 
 - **TypeScript** first-class support
 - Clean **Page Object / Component** architecture
-- Centralized **fixtures** and test data factories
-- **API testing** support alongside UI
+- Centralized **fixtures** and test data factories (`@faker-js/faker`)
+- **API testing** support with `BaseApiService`
 - **Smoke + E2E + API** test layers
 - Built-in **Allure** and Playwright HTML reporting
-- **GitHub Actions** CI quality gates (smoke + regression)
-- Environment-aware configuration
-- Strong typing, linting, and pre-commit hooks ready
+- **GitHub Actions** CI quality gates (smoke → regression → gate)
+- Environment-aware configuration (`.env`)
+- **Excel** read / write / append (`ExcelHelper` – ExcelJS)
+- **Database** helpers for PostgreSQL, MySQL, MSSQL (`DatabaseHelper`)
+- **File** helpers – JSON, CSV, text (`FileHelper`)
+- **Date** utilities (`DateHelper` – date-fns)
+- Structured **logging** (Winston)
 - Accessibility helpers (axe-core ready)
 - Parallel execution support
+- Strong typing + ESLint ready
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone / copy this folder
-cd playwright-boilerplate
-
-# Install dependencies
+cd frameworks/playwright-boilerplate
 npm install
-
-# Install browsers
 npx playwright install
-
-# Run smoke tests
+cp .env.example .env   # then edit values
 npm run test:smoke
-
-# Run full suite
 npm test
-
-# Show HTML report
 npm run report
 ```
 
@@ -57,30 +52,25 @@ playwright-boilerplate/
 │   ├── pages/          # Page Objects
 │   ├── components/     # Reusable UI components
 │   ├── fixtures/       # Custom Playwright fixtures
-│   ├── helpers/        # Common utilities & assertions
-│   ├── services/       # API service classes
-│   └── data/           # Test data factories
+│   ├── helpers/        # Excel, DB, File, Date, Assertions, a11y
+│   ├── services/       # API service base classes
+│   ├── data/           # Test data factories
+│   ├── config/         # env loader
+│   └── utils/          # logger
 ├── tests/
-│   ├── smoke/          # Fast feedback pack
-│   ├── e2e/            # End-to-end journeys
-│   └── api/            # API / contract tests
-├── docs/               # Framework documentation
-├── .github/workflows/  # CI quality gates
+│   ├── smoke/
+│   ├── e2e/
+│   └── api/
+├── docs/
+│   ├── FRAMEWORK-GUIDE.md
+│   └── HELPERS.md
 ├── playwright.config.ts
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+└── .env.example
 ```
 
----
-
-## Recommended Usage on Engagements
-
-1. Copy this boilerplate into the client repository or a dedicated test repo
-2. Update `playwright.config.ts` with environment URLs and projects
-3. Implement Page Objects for the application under test
-4. Start with a small **Smoke** pack → expand to critical journeys
-5. Wire into the client’s CI/CD using the provided GitHub Actions examples
-6. Apply the coding standards and review process from the Automation Strategy
+See [docs/HELPERS.md](docs/HELPERS.md) for detailed usage of Excel, Database, File, Date, and data factories.
 
 ---
 
