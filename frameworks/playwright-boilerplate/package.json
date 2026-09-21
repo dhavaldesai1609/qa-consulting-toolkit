@@ -1,0 +1,33 @@
+{
+  "name": "playwright-boilerplate",
+  "version": "1.0.0",
+  "description": "Production-ready Playwright + TypeScript boilerplate for consulting engagements",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --project=smoke",
+    "test:e2e": "playwright test --project=e2e",
+    "test:api": "playwright test --project=api",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open ./allure-report",
+    "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "test-automation",
+    "qa",
+    "boilerplate"
+  ],
+  "author": "Dhaval B. Desai",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0",
+    "allure-playwright": "^3.0.0"
+  }
+}
